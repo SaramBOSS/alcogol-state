@@ -1,0 +1,18 @@
+function normalization_srting = normalizeData(acc_gyro_string)
+
+if (exist('Norm.mat','file') == 0)
+    for n = 1:table2array(dataGyr(end,1))
+        if (table2array(dataGyr(n,2)) - table2array(dataGyr(2,2))) > 10000
+            normalization(dataGyr(1:n,:));
+            dataGyr(1:n,:) = [];
+            flag =  1;
+            break;
+        end
+    end
+    if(flag == 0)
+        I = 2;
+         return;
+    end
+end
+
+end
